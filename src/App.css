@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
+
+
+.header {
+background-color: aquamarine;
+position: fixed;;
+top: 0;
+width: 100vw;
+height: 10vh;
+padding: 0 5vw;
+display: flex;
+flex-direction: row;
+flex-grow: 1;
+box-sizing: border-box;
+box-shadow: 0 1px  1px lightgray;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  position: absolute;
+  height: calc(10vh - 30px);
+  width: calc(10vh - 30px);
+  padding:  15px 0;
+  user-select: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-bar {
   display: flex;
-  flex-direction: column;
+  flex: 1;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav {
+  margin: 0 15px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  user-select: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo:hover {
+  cursor: pointer;
+}
+
+.nav:hover {
+  cursor: pointer;
+}
+
+.rights {
+  text-align: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.contacts {
+  display: flex;
+  flex: 5;
+  flex-direction: column;
+  font-size: 1.2rem;
+justify-content: center;
+font-weight: 500;
+}
+
+.contact {
+  font-size: 1rem;
+  margin: 2px 0;
+  font-weight: 400;
+}
+
+.logo-img{
+  object-fit: scale-down;
+}
+
+.body {
+  background-color: white;
+  margin-top: 10vh;
+  min-height: 70vh;
+  padding: 0 5vw;
+}
+
+.about {
+padding: 5vh 30vw;
+background: no-repeat center url('./assets/about2.png');
+}
+
+.title{
+text-align: center;
+font-size: 1.7rem;
+margin-bottom: 30px;
+}
+
+.content {
+font-size: 1.2rem;
+}
+
+.footer{
+  background-color: aquamarine;
+  height: 20vh;
+  padding: 0 5vw;
+  box-shadow: 0 -10px 25px  lightgray;
+  display: flex;
+  flex-direction: column;
+  color: black
 }
