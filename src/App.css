@@ -37,12 +37,19 @@ box-shadow: 0 1px  1px lightgray;
   user-select: none;
 }
 
+
+.nav:hover {
+  cursor: pointer;
+}
+
 .logo:hover {
   cursor: pointer;
 }
 
-.nav:hover {
-  cursor: pointer;
+a{
+  color: inherit;
+  cursor: inherit;
+  text-decoration: inherit;
 }
 
 .rights {
@@ -79,10 +86,11 @@ font-weight: 500;
   padding: 0 5vw;
 }
 
-.about {
-padding: 5vh 30vw;
-background: no-repeat center url('./assets/about2.png');
+.about-area {
+  padding: 5vh 30vw;
+  background: no-repeat center url('./assets/about2.png');
 }
+
 
 .title{
 text-align: center;
@@ -92,6 +100,11 @@ margin-bottom: 30px;
 
 .content {
 font-size: 1.2rem;
+}
+
+
+.products-area{
+  padding: 5vh 0;
 }
 
 .footer{
