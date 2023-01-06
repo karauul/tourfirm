@@ -5,6 +5,7 @@
   background-color: rgb(229, 253, 245);
   padding: 16px;
   border-radius: 8px;
+  box-sizing: content-box;
 }
 
 .product-image-wrapper {
@@ -28,7 +29,7 @@
 .product-title {
   font-size: 1.2rem;
   font-weight: 500;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .product-price {
@@ -38,4 +39,5 @@
 
 .product-description {
   text-align: justify;
+  margin-bottom: 20px;
 }
