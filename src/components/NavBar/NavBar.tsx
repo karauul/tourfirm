@@ -6,30 +6,21 @@ interface INavBarItem {
   link: string;
 }
 
-interface IProps{
+interface IProps {
   items: INavBarItem[];
 }
 
-const NavBar: React.FC<IProps> = (props) => {
- 
+const NavBar: React.FC<IProps> = (props: IProps) => {
   return (
-      <div className='nav-bar'>
-        {
-          props.items.map((item)=>
-           <  div 
-              key={item.title}
-              className='nav'
-            
-           >
-            <HashLink
-             to = {item.link}
-             smooth
-             >  
-             {item.title}</HashLink>
-            </div> 
-            )  
-        }
-      </div>
-    );
-}
+    <div className="nav-bar">
+      {props.items.map((item) => (
+        <div key={item.title} className="nav">
+          <HashLink to={item.link} smooth>
+            {item.title}
+          </HashLink>
+        </div>
+      ))}
+    </div>
+  );
+};
 export default NavBar;
