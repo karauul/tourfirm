@@ -1,0 +1,5 @@
+.add-order-button-wrapper {
+  display: flex;
+  direction: row;
+  justify-content: flex-end;
+}

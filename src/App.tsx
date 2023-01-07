@@ -1,10 +1,7 @@
-import { ShoppingCartOutlined } from '@ant-design/icons';
-import { Button, List, Space } from 'antd';
-import Badge from 'antd/es/badge';
-import Modal from 'antd/es/modal';
 import React, { useState } from 'react';
 import './App.css';
 import logo from './assets/logo.svg';
+import Cart from './components/Cart';
 import NavBar from './components/NavBar';
 import Products from './components/Products';
 import { IProduct } from './components/Products/components/Product';
@@ -14,7 +11,6 @@ const lorenipsum =
 
 const App: React.FC = () => {
   const [cartItems, setCartItems] = useState<IProduct[]>([]);
-  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
 
   const handleAddItemToCart = (product: IProduct) => {
     if (cartItems.find((cartItem) => cartItem.id === product.id)) return;
@@ -27,12 +23,8 @@ const App: React.FC = () => {
     ]);
   };
 
-  const handleOpenCart = () => {
-    setIsCartModalOpen(true);
-  };
-
-  const handleCloseCart = () => {
-    setIsCartModalOpen(false);
+  const handleClearCart = () => {
+    setCartItems([]);
   };
 
   return (
@@ -59,18 +51,11 @@ const App: React.FC = () => {
         />
 
         <div className="cart-wrapper">
-          <Space size={'large'}>
-            <Badge count={cartItems.length}>
-              <Button
-                size="large"
-                type="text"
-                shape="circle"
-                style={{ color: 'black' }}
-                icon={<ShoppingCartOutlined style={{ fontSize: '24px' }} />}
-                onClick={handleOpenCart}
-              />
-            </Badge>
-          </Space>
+          <Cart
+            cartItems={cartItems}
+            handleRemoveItemFromCart={handleRemoveItemFromToCart}
+            handleCleanerCart={handleClearCart}
+          />
         </div>
       </div>
       <div className="body">
@@ -95,33 +80,6 @@ const App: React.FC = () => {
           © Все права защищены. ООО &quot;Турфирма&quot;.
         </div>
       </div>
-      <Modal
-        open={isCartModalOpen}
-        footer={null}
-        onCancel={handleCloseCart}
-        style={{ top: '11vh', right: '10 px' }}
-      >
-        <List
-          itemLayout="horizontal"
-          dataSource={cartItems}
-          renderItem={(item) => (
-            <List.Item
-              actions={[
-                <Button
-                  key={'remove-item-button'}
-                  type="default"
-                  danger
-                  onClick={() => handleRemoveItemFromToCart(item)}
-                >
-                  Удалить
-                </Button>,
-              ]}
-            >
-              {item.title}
-            </List.Item>
-          )}
-        ></List>
-      </Modal>
     </>
   );
 };
