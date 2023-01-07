@@ -1,10 +1,12 @@
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { Badge, Button, Modal, Space, Tabs } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { randomNumberInRange } from '../../utils/randomNumber';
 import { IProduct } from '../Products/components/Product';
 import CartItemsTab from './Components/CartItemsTab';
 import OrdersTab from './Components/OrdersTab';
+import cookies from '../../utils/cookies';
+import cookiesNames from '../../constants/cookiesNames';
 
 interface IProps {
   cartItems: IProduct[];
@@ -23,6 +25,16 @@ const Cart: React.FC<IProps> = (props: IProps) => {
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [orders, setOrders] = useState<IOrder[]>([]);
 
+  useEffect(() => {
+    const ordersFromCookies =
+      (cookies.get(cookiesNames.orders) as IOrder[]) ?? [];
+    setOrders(ordersFromCookies);
+  }, []);
+
+  const handleChangeOrders = (orders: IOrder[]) => {
+    cookies.set(cookiesNames.orders, orders);
+  };
+
   const handleOpenCart = () => {
     setIsCartModalOpen(true);
   };
@@ -33,13 +45,21 @@ const Cart: React.FC<IProps> = (props: IProps) => {
 
   const handleAddOrder = (order: IOrder) => {
     order.id = randomNumberInRange(1, 10000000);
+    const newOrders = [...orders, order];
 
-    setOrders([...orders, order]);
+    setOrders(newOrders);
+
+    handleChangeOrders(newOrders);
+
+    props.handleCleanerCart();
   };
 
   const handleRemoveOrder = (orderToDelete: IOrder) => {
-    setOrders(orders.filter((order) => order.id !== orderToDelete.id));
-    props.handleCleanerCart();
+    const newOrders = orders.filter((order) => order.id !== orderToDelete.id);
+
+    setOrders(newOrders);
+
+    handleChangeOrders(newOrders);
   };
 
   return (
