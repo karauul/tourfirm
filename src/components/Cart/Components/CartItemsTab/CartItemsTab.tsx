@@ -10,15 +10,16 @@ interface IProps {
 }
 
 const CartItemsTab: React.FC<IProps> = (props: IProps) => {
+  const totalPrice = props.cartItems.reduce(
+    (result, cartItem) => result + cartItem.price,
+    0
+  );
   const handleAddOrder = () => {
     if (props.cartItems.length === 0) return;
 
     const order: IOrder = {
       products: props.cartItems,
-      totalPrice: props.cartItems.reduce(
-        (result, cartItem) => result + cartItem.price,
-        0
-      ),
+      totalPrice: totalPrice,
       date: new Date().toDateString(),
     };
     props.handleAddOrder(order);
@@ -45,7 +46,10 @@ const CartItemsTab: React.FC<IProps> = (props: IProps) => {
           </List.Item>
         )}
       />
-      <div className="add-order-button-wrapper">
+      <div className="add-order-wrapper">
+        <div className="total-price">
+          {props.cartItems.length === 0 ? '' : `${totalPrice} ₽`}
+        </div>
         <Button
           disabled={props.cartItems.length === 0}
           size="large"
