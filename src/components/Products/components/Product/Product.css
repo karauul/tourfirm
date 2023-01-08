@@ -6,6 +6,8 @@
   padding: 16px;
   border-radius: 8px;
   box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-image-wrapper {
@@ -40,4 +42,9 @@
 .product-description {
   text-align: justify;
   margin-bottom: 20px;
+}
+
+.action-buttons-wrapper {
+  width: 100%;
+  margin-top: auto;
 }

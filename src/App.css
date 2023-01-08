@@ -29,25 +29,6 @@
   user-select: none;
 }
 
-.nav-bar {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav {
-  margin: 0 15px;
-  font-size: 1.5rem;
-  font-weight: 500;
-  user-select: none;
-}
-
-.nav:hover {
-  cursor: pointer;
-}
-
 .logo:hover {
   cursor: pointer;
 }
@@ -101,6 +82,7 @@ a {
   text-align: center;
   font-size: 1.7rem;
   margin-bottom: 30px;
+  font-weight: 500;
 }
 
 .content {

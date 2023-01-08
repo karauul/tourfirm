@@ -1,7 +1,6 @@
 import './Product.css';
-import { Button, Space, Divider, Modal } from 'antd';
+import { Button, Space, Divider, Modal, Tooltip } from 'antd';
 import { useState } from 'react';
-import Item from 'antd/es/list/Item';
 
 export interface IProduct {
   id: number;
@@ -14,6 +13,8 @@ export interface IProduct {
 interface IProps {
   item: IProduct;
   handleAddItemToCart: (product: IProduct) => void;
+  cartItems: IProduct[];
+  handleOpenCart: () => void;
 }
 
 const Product: React.FC<IProps> = (props: IProps) => {
@@ -39,25 +40,40 @@ const Product: React.FC<IProps> = (props: IProps) => {
           Описание:
           {props.item.description}
         </div>
-        <Space.Compact block size="large">
-          <Button
-            block
-            type="primary"
-            size="large"
-            onClick={() => props.handleAddItemToCart(props.item)}
-          >
-            Купить
-          </Button>
-          <Button
-            block
-            ghost
-            type="primary"
-            size="large"
-            onClick={handleMoreClick}
-          >
-            Подробнее
-          </Button>
-        </Space.Compact>
+        <div className="action-buttons-wrapper">
+          <Space.Compact block size="large">
+            {props.cartItems.find(cartItem => cartItem.id === props.item.id) ? (
+              <Tooltip title={'Товар уже в корзине'}>
+                <Button
+                  block
+                  type="primary"
+                  ghost
+                  onClick={props.handleOpenCart}
+                >
+                  В корзине
+                </Button>
+              </Tooltip>
+            ) : (
+              <Button
+                block
+                type="primary"
+                size="large"
+                onClick={() => props.handleAddItemToCart(props.item)}
+              >
+                В корзину
+              </Button>
+            )}
+            <Button
+              block
+              ghost
+              type="primary"
+              size="large"
+              onClick={handleMoreClick}
+            >
+              Подробнее
+            </Button>
+          </Space.Compact>
+        </div>
       </div>
       <Modal
         open={isModalOpen}

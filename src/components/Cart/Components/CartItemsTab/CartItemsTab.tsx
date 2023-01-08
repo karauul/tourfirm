@@ -1,17 +1,21 @@
-import { Button, List } from 'antd';
+import { DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button, InputNumber, List, Space } from 'antd';
+import ButtonGroup from 'antd/es/button/button-group';
+import { CartItem } from '../../../../App';
 import { IProduct } from '../../../Products/components/Product';
 import { IOrder } from '../../Cart';
 import './CartItemsTab.css';
 
 interface IProps {
-  cartItems: IProduct[];
+  cartItems: CartItem[];
   handleRemoveItemFromCart: (item: IProduct) => void;
   handleAddOrder: (order: IOrder) => void;
+  handleCartItemCountChange: (CartItemId: number, newCount: number) => void;
 }
 
 const CartItemsTab: React.FC<IProps> = (props: IProps) => {
   const totalPrice = props.cartItems.reduce(
-    (result, cartItem) => result + cartItem.price,
+    (result, cartItem) => result + cartItem.count * cartItem.price,
     0
   );
   const handleAddOrder = () => {
@@ -24,26 +28,57 @@ const CartItemsTab: React.FC<IProps> = (props: IProps) => {
     };
     props.handleAddOrder(order);
   };
+
   return (
     <>
       <List
         itemLayout="horizontal"
         dataSource={props.cartItems}
-        renderItem={(item) => (
-          <List.Item
-            actions={[
+        renderItem={item => (
+          <div className="cart-item">
+            <div className="cart-item-content-wrapper">
+              <div className="cart-item-image-wrapper">
+                <img className="cart-item-image" src={item.image} alt="" />
+              </div>
+              <div className="cart-item-title">{item.title}</div>
+              <div className="cart-item-price-wrapper">
+                <div className="cart-item-price">{item.price} ₽</div>
+              </div>
+            </div>
+            <div className="cart-item-actions-bar">
+              <Space.Compact key={'change-count-actions-bar'}>
+                <Button
+                  icon={<MinusOutlined />}
+                  onClick={() =>
+                    props.handleCartItemCountChange(item.id, item.count - 1)
+                  }
+                />
+                <InputNumber
+                  min={1}
+                  max={100}
+                  style={{ width: 50 }}
+                  controls={false}
+                  value={item.count}
+                  onChange={value =>
+                    props.handleCartItemCountChange(item.id, value ?? 1)
+                  }
+                />
+                <Button
+                  icon={<PlusOutlined />}
+                  onClick={() =>
+                    props.handleCartItemCountChange(item.id, item.count + 1)
+                  }
+                />
+              </Space.Compact>
+
               <Button
-                key={'remove-item-button'}
-                type="default"
-                danger
+                key={'delete-item-button'}
                 onClick={() => props.handleRemoveItemFromCart(item)}
-              >
-                Удалить
-              </Button>,
-            ]}
-          >
-            {item.title}
-          </List.Item>
+                icon={<DeleteOutlined />}
+                danger
+              />
+            </div>
+          </div>
         )}
       />
       <div className="add-order-wrapper">
