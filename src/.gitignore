@@ -6,6 +6,9 @@ node_modules/
 .pnp.js
 
 
+# ide
+.vscode/
+
 # .net builds
 Build results
 [Dd]ebug/
@@ -28,7 +31,7 @@ build/
 # misc
 .DS_Store
 .env.local
-.env.development.local
+.env.development.localg
 .env.test.local
 .env.production.local
 
