@@ -1,9 +1,9 @@
 import Product, { IProduct } from './components/Product';
 import './Products.css';
-import tour1 from '../../assets/tour1.jpg';
-import tour2 from '../../assets/tour2.png';
-import tour3 from '../../assets/tour3.jpg';
-import tour4 from '../../assets/tour4.jpg';
+import tour1 from 'assets/tour1.jpg';
+import tour2 from 'assets/tour2.png';
+import tour3 from 'assets/tour3.jpg';
+import tour4 from 'assets/tour4.jpg';
 
 interface IProps {
   handleAddItemToCart: (product: IProduct) => void;

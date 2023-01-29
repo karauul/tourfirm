@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import logo from './assets/logo.svg';
-import Cart from './components/Cart';
-import NavBar from './components/NavBar';
-import Products from './components/Products';
-import { IProduct } from './components/Products/components/Product';
-import cookiesNames from './constants/cookiesNames';
-import cookies from './utils/cookies';
+import 'App.css';
+import logo from 'assets/logo.svg';
+import Cart from 'components/Cart';
+import NavBar from 'components/NavBar';
+import Products from 'components/Products';
+import { IProduct } from 'components/Products/components/Product';
+import cookiesNames from 'constants/cookiesNames';
+import cookies from 'utils/cookies';
 
 const lorenipsum =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas integer eget aliquet nibh praesent. Velit scelerisque in dictum non consectetur a. Ullamcorper sit amet risus nullam. Facilisis volutpat est velit egestas dui id ornare. Ante metus dictum at tempor commodo ullamcorper a. Nibh tortor id aliquet lectus proin nibh nisl condimentum id. Vulputate sapien nec sagittis aliquam. Augue interdum velit euismod in pellentesque massa placerat duis ultricies. Odio tempor orci dapibus ultrices in iaculis. Lacinia at quis risus sed. Consequat interdum varius sit amet mattis vulputate. Integer quis auctor elit sed vulputate mi sit amet mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi. Nunc sed blandit libero volutpat sed cras ornare arcu. Libero volutpat sed cras ornare. Habitant morbi tristiqu';
