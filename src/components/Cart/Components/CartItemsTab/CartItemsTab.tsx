@@ -1,8 +1,8 @@
 import { DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, InputNumber, List, Space } from 'antd';
-import { CartItem } from '../../../../App';
-import { IProduct } from '../../../Products/components/Product';
-import { IOrder } from '../../Cart';
+import { Button, Divider, InputNumber, List, Space } from 'antd';
+import { IProduct } from 'api/baseApi/models/product';
+import { CartItem } from 'App';
+import { IOrder } from 'components/Cart';
 import './CartItemsTab.css';
 
 interface IProps {
@@ -81,6 +81,7 @@ const CartItemsTab: React.FC<IProps> = (props: IProps) => {
           </div>
         )}
       />
+      <Divider />
       <div className="add-order-wrapper">
         <div className="total-price">
           {props.cartItems.length === 0 ? '' : `${totalPrice} ₽`}

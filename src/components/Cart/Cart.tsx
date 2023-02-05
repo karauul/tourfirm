@@ -1,13 +1,13 @@
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { Badge, Button, Modal, Space, Tabs } from 'antd';
 import { useEffect, useState } from 'react';
-import { randomNumberInRange } from '../../utils/randomNumber';
-import { IProduct } from '../Products/components/Product';
+import { randomNumberInRange } from 'utils/randomNumber';
+import { IProduct } from 'api/baseApi/models/product';
 import CartItemsTab from './Components/CartItemsTab';
 import OrdersTab from './Components/OrdersTab';
-import cookies from '../../utils/cookies';
-import cookiesNames from '../../constants/cookiesNames';
-import { CartItem } from '../../App';
+import cookies from 'utils/cookies';
+import cookiesNames from 'constants/cookiesNames';
+import { CartItem } from 'App';
 
 interface IProps {
   cartItems: CartItem[];

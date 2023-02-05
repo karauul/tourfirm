@@ -47,6 +47,7 @@ a {
   margin-top: 10vh;
   min-height: 70vh;
   padding: 0 5vw;
+  box-sizing: content-box;
 }
 .about-area {
   padding: 6vh 30vw;
