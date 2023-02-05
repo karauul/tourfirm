@@ -42,6 +42,7 @@ const Products: React.FC<IProps> = (props: IProps) => {
       description: 'Описание',
     },
   ];
+
   return (
     <div className="products">
       {products.map(item => (
@@ -56,4 +57,5 @@ const Products: React.FC<IProps> = (props: IProps) => {
     </div>
   );
 };
+
 export default Products;

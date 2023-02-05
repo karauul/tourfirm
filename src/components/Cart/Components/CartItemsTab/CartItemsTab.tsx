@@ -1,6 +1,5 @@
 import { DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, InputNumber, List, Space } from 'antd';
-import ButtonGroup from 'antd/es/button/button-group';
 import { CartItem } from '../../../../App';
 import { IProduct } from '../../../Products/components/Product';
 import { IOrder } from '../../Cart';
@@ -18,6 +17,7 @@ const CartItemsTab: React.FC<IProps> = (props: IProps) => {
     (result, cartItem) => result + cartItem.count * cartItem.price,
     0
   );
+
   const handleAddOrder = () => {
     if (props.cartItems.length === 0) return;
 
@@ -96,4 +96,5 @@ const CartItemsTab: React.FC<IProps> = (props: IProps) => {
     </>
   );
 };
+
 export default CartItemsTab;
