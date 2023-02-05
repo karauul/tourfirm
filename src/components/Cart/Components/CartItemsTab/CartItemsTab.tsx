@@ -17,6 +17,7 @@ const CartItemsTab: React.FC<IProps> = (props: IProps) => {
     (result, cartItem) => result + cartItem.count * cartItem.price,
     0
   );
+
   const handleAddOrder = () => {
     if (props.cartItems.length === 0) return;
 
@@ -96,4 +97,5 @@ const CartItemsTab: React.FC<IProps> = (props: IProps) => {
     </>
   );
 };
+
 export default CartItemsTab;

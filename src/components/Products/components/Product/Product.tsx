@@ -20,6 +20,7 @@ const Product: React.FC<IProps> = (props: IProps) => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   return (
     <>
       <div className="product">
@@ -90,4 +91,5 @@ const Product: React.FC<IProps> = (props: IProps) => {
     </>
   );
 };
+
 export default Product;
