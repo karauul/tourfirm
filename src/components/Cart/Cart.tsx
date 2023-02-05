@@ -1,7 +1,7 @@
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { Badge, Button, Modal, Space, Tabs } from 'antd';
 import { useEffect, useState } from 'react';
-import { randomNumberInRange } from '../../utils/randomNumber';
+import { randomNumberInRange } from 'utils/randomNumber';
 import { IProduct } from 'api/baseApi/models/product';
 import CartItemsTab from './Components/CartItemsTab';
 import OrdersTab from './Components/OrdersTab';
