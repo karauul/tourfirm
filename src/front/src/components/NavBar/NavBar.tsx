@@ -8,6 +8,7 @@ interface INavBarItem {
 
 interface IProps {
   items: INavBarItem[];
+  needStartAndEndIndention?: boolean;
 }
 
 const NavBar: React.FC<IProps> = (props: IProps) => {
@@ -21,7 +22,10 @@ const NavBar: React.FC<IProps> = (props: IProps) => {
   };
 
   return (
-    <div className="nav-bar">
+    <div
+      className="nav-bar"
+      style={{ margin: props.needStartAndEndIndention ? undefined : '0 -22px' }}
+    >
       {props.items.map(item => (
         <div key={item.title} className="nav">
           <HashLink to={item.link} scroll={scrollToElement}>

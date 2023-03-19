@@ -7,9 +7,15 @@ import Products from 'components/Products';
 import cookiesNames from 'constants/cookiesNames';
 import cookies from 'utils/cookies';
 import { IProduct } from 'api/baseApi/models/product';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import SocialNetworks from 'components/social_networks/SocialNetworks';
+import vkIcon from 'assets/vk.svg';
+import telegramIcon from 'assets/telegram.svg';
+import whatsappIcon from 'assets/whatsapp.svg';
 
-const aboutText =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas integer eget aliquet nibh praesent. Velit scelerisque in dictum non consectetur a. Ullamcorper sit amet risus nullam. Facilisis volutpat est velit egestas dui id ornare. Ante metus dictum at tempor commodo ullamcorper a. Nibh tortor id aliquet lectus proin nibh nisl condimentum id. Vulputate sapien nec sagittis aliquam. Augue interdum velit euismod in pellentesque massa placerat duis ultricies. Odio tempor orci dapibus ultrices in iaculis. Lacinia at quis risus sed. Consequat interdum varius sit amet mattis vulputate. Integer quis auctor elit sed vulputate mi sit amet mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi. Nunc sed blandit libero volutpat sed cras ornare arcu. Libero volutpat sed cras ornare. Habitant morbi tristiqu';
+const aboutText = `Туроператор "Одиссея"- крупная и надежная компания в сфере туризма.
+  На рынке туроператорской деятельности уже более 24 лет.
+  Лидер продаж автобусных туров по России на протяжении 20 лет.`;
 
 export type CartItem = IProduct & {
   count: number;
@@ -104,7 +110,7 @@ const App: React.FC = () => {
       </div>
       <div className="body">
         <div className="about-area" id="about-area">
-          <div className="title">Lorem ipsum</div>
+          <div className="title">О нас</div>
           <div className="content">{aboutText}</div>
         </div>
         <div className="products-area" id="products-area">
@@ -117,12 +123,42 @@ const App: React.FC = () => {
         </div>
       </div>
       <div className="footer">
-        <div className="contacts" id="contacts">
-          Контакты:
-          <div className="contact">+7 923 - Адель</div>
-          <div className="contact">+7 923 - Адель</div>
-          <div className="contact">+7 923 - Адель</div>
-          <div className="contact">+7 923 - Адель</div>
+        <div className="footer-body">
+          <div className="contacts" id="contacts">
+            <span className="footer-title">Контакты:</span>
+            <div className="contact">+7 923 - Служба поддержки</div>
+            <div className="contact">+7 923 - Отдел продаж</div>
+          </div>
+          <div className="yandex-map-wrapper">
+            <div className="footer-title">Мы на карте</div>
+            <YMaps>
+              <Map
+                className="yandex-map"
+                options={{
+                  autoFitToViewport: 'always',
+                  yandexMapDisablePoiInteractivity: true,
+                }}
+                defaultState={{ center: [55.779474, 49.128126], zoom: 16 }}
+              >
+                <Placemark
+                  geometry={[55.779474, 49.128126]}
+                  properties={{
+                    iconCaption: 'Мы ждем вас здесь!',
+                  }}
+                />
+              </Map>
+            </YMaps>
+          </div>
+          <div className="social-networks-wrapper">
+            <span className="footer-title">Мы в соцсетях:</span>
+            <SocialNetworks
+              items={[
+                { icon: vkIcon, src: 'https://vk.com' },
+                { icon: telegramIcon, src: 'https://telegram.org' },
+                { icon: whatsappIcon, src: 'https://whatsapp.com' },
+              ]}
+            />
+          </div>
         </div>
         <div className="rights">
           © Все права защищены. ООО &quot;Турфирма&quot;.
