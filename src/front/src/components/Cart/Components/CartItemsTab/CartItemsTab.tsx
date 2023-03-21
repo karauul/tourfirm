@@ -3,6 +3,7 @@ import { Button, Divider, InputNumber, List, Space } from 'antd';
 import { IProduct } from 'api/baseApi/models/product';
 import { CartItem } from 'App';
 import { IOrder } from 'components/Cart';
+import CartList from '../CartList';
 import './CartItemsTab.css';
 
 interface IProps {
@@ -31,55 +32,10 @@ const CartItemsTab: React.FC<IProps> = (props: IProps) => {
 
   return (
     <>
-      <List
-        itemLayout="horizontal"
-        dataSource={props.cartItems}
-        renderItem={item => (
-          <div className="cart-item">
-            <div className="cart-item-content-wrapper">
-              <div className="cart-item-image-wrapper">
-                <img className="cart-item-image" src={item.image} alt="" />
-              </div>
-              <div className="cart-item-title">{item.title}</div>
-              <div className="cart-item-price-wrapper">
-                <div className="cart-item-price">{item.price} ₽</div>
-              </div>
-            </div>
-            <div className="cart-item-actions-bar">
-              <Space.Compact key={'change-count-actions-bar'}>
-                <Button
-                  icon={<MinusOutlined />}
-                  onClick={() =>
-                    props.handleCartItemCountChange(item.id, item.count - 1)
-                  }
-                />
-                <InputNumber
-                  min={1}
-                  max={100}
-                  style={{ width: 50 }}
-                  controls={false}
-                  value={item.count}
-                  onChange={value =>
-                    props.handleCartItemCountChange(item.id, value ?? 1)
-                  }
-                />
-                <Button
-                  icon={<PlusOutlined />}
-                  onClick={() =>
-                    props.handleCartItemCountChange(item.id, item.count + 1)
-                  }
-                />
-              </Space.Compact>
-
-              <Button
-                key={'delete-item-button'}
-                onClick={() => props.handleRemoveItemFromCart(item)}
-                icon={<DeleteOutlined />}
-                danger
-              />
-            </div>
-          </div>
-        )}
+      <CartList
+        cartItems={props.cartItems}
+        handleCartItemCountChange={props.handleCartItemCountChange}
+        handleRemoveItemFromCart={props.handleRemoveItemFromCart}
       />
       <Divider />
       <div className="add-order-wrapper">
