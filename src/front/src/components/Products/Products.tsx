@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import LoadingProduct from './components/LoadingProduct';
 import Product from './components/Product';
-import './Products.css';
+import './Products.scss';
 
 interface IProps {
   handleAddItemToCart: (product: IProduct) => void;

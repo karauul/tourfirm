@@ -1,0 +1,19 @@
+.loading-product {
+  margin: 0px 32px 50px 32px;
+  width: calc(100% / 4 - 96px);
+  background-color: rgb(229, 253, 245);
+  padding: 16px;
+  border-radius: 8px;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.custom-skeleton-button-style {
+  width: 100% !important;
+}
+
+.ant-space-item {
+  width: 45%;
+}

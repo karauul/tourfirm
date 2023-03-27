@@ -4,7 +4,7 @@ import { IProduct } from 'api/baseApi/models/product';
 import { CartItem } from 'App';
 import { IOrder } from 'components/Cart';
 import CartList from '../CartList';
-import './CartItemsTab.css';
+import './CartItemsTab.scss';
 
 interface IProps {
   cartItems: CartItem[];

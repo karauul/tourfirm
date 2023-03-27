@@ -1,7 +1,7 @@
 import Icon from '@ant-design/icons/lib/components/Icon';
 import { Button } from 'antd';
 import { openURL } from 'utils/openURL';
-import './SocialNetworks.css';
+import './SocialNetworks.scss';
 
 interface ISocialNetork {
   icon: string;

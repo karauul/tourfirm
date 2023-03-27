@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import 'App.css';
 import logo from 'assets/logo.svg';
 import Cart from 'components/Cart';
 import NavBar from 'components/NavBar';
@@ -12,6 +11,7 @@ import SocialNetworks from 'components/social_networks/SocialNetworks';
 import vkIcon from 'assets/vk.svg';
 import telegramIcon from 'assets/telegram.svg';
 import whatsappIcon from 'assets/whatsapp.svg';
+import 'App.scss';
 
 const aboutText = `Туроператор "Одиссея"- крупная и надежная компания в сфере туризма.
   На рынке туроператорской деятельности уже более 24 лет.
@@ -138,7 +138,7 @@ const App: React.FC = () => {
                   autoFitToViewport: 'always',
                   yandexMapDisablePoiInteractivity: true,
                 }}
-                defaultState={{ center: [55.779474, 49.128126], zoom: 16 }}
+                defaultState={{ center: [55.779474, 49.128126], zoom: 15 }}
               >
                 <Placemark
                   geometry={[55.779474, 49.128126]}
