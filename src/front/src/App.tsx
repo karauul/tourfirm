@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import logo from 'assets/logo.svg';
 import Cart from 'components/Cart';
 import NavBar from 'components/NavBar';
 import Products from 'components/Products';
-import cookiesNames from 'constants/cookiesNames';
-import cookies from 'utils/cookies';
-import { IProduct } from 'api/baseApi/models/product';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import SocialNetworks from 'components/social_networks/SocialNetworks';
 import vkIcon from 'assets/vk.svg';
@@ -17,49 +14,8 @@ const aboutText = `Туроператор "Одиссея"- крупная и н
   На рынке туроператорской деятельности уже более 24 лет.
   Лидер продаж автобусных туров по России на протяжении 20 лет.`;
 
-export type CartItem = IProduct & {
-  count: number;
-};
-
 const App: React.FC = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
-
-  useEffect(() => {
-    setCartItems(cookies.get(cookiesNames.cart) ?? []);
-  }, []);
-
-  const handleAddItemToCart = (product: IProduct) => {
-    if (cartItems.find(cartItem => cartItem.id === product.id)) return;
-    const newCartItems = [...cartItems, { ...product, count: 1 }];
-    setCartItems([...cartItems, { ...product, count: 1 }]);
-    handleCartItemsChange(newCartItems);
-  };
-
-  const handleCartItemsCountChange = (cartItemId: number, newCount: number) => {
-    if (newCount < 1 || newCount > 100) return;
-
-    const newCartItems = cartItems.slice();
-    const cartItem = newCartItems.find(cartItem => cartItem.id == cartItemId);
-    if (!cartItem) return;
-    cartItem.count = newCount;
-    setCartItems(newCartItems);
-    handleCartItemsChange(newCartItems);
-  };
-
-  const handleRemoveItemFromCart = (product: IProduct) => {
-    const newCartItems = [
-      ...cartItems.filter(cartItems => cartItems.id !== product.id),
-    ];
-    setCartItems(newCartItems);
-    handleCartItemsChange(newCartItems);
-  };
-
-  const handleClearCart = () => {
-    setCartItems([]);
-    handleCartItemsChange([]);
-  };
 
   const handleOpenCart = () => {
     setIsCartModalOpen(true);
@@ -67,10 +23,6 @@ const App: React.FC = () => {
 
   const handleCloseCart = () => {
     setIsCartModalOpen(false);
-  };
-
-  const handleCartItemsChange = (newCartItems: CartItem[]) => {
-    cookies.set(cookiesNames.cart, newCartItems);
   };
 
   return (
@@ -98,13 +50,9 @@ const App: React.FC = () => {
 
         <div className="cart-wrapper">
           <Cart
-            cartItems={cartItems}
-            handleRemoveItemFromCart={handleRemoveItemFromCart}
-            handleCleanerCart={handleClearCart}
             isCartModalOpen={isCartModalOpen}
             handleOpenCart={handleOpenCart}
             handleCloseCart={handleCloseCart}
-            handleCartItemCountChange={handleCartItemsCountChange}
           />
         </div>
       </div>
@@ -115,11 +63,7 @@ const App: React.FC = () => {
         </div>
         <div className="products-area" id="products-area">
           <div className="title">Наши услуги</div>
-          <Products
-            handleAddItemToCart={handleAddItemToCart}
-            cartItems={cartItems}
-            handleOpenCart={handleOpenCart}
-          />
+          <Products handleOpenCart={handleOpenCart} />
         </div>
       </div>
       <div className="footer">

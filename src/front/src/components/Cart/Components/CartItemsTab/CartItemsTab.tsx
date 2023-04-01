@@ -1,49 +1,59 @@
-import { DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, Divider, InputNumber, List, Space } from 'antd';
-import { IProduct } from 'api/baseApi/models/product';
-import { CartItem } from 'App';
+import { Button, Divider } from 'antd';
 import { IOrder } from 'components/Cart';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  clearCart,
+  removeProduct,
+  setProductCount,
+} from 'redux/ducks/cart_list';
+import { RootState } from 'redux/rootReducer';
 import CartList from '../CartList';
 import './CartItemsTab.scss';
 
 interface IProps {
-  cartItems: CartItem[];
-  handleRemoveItemFromCart: (item: IProduct) => void;
   handleAddOrder: (order: IOrder) => void;
-  handleCartItemCountChange: (CartItemId: number, newCount: number) => void;
 }
 
 const CartItemsTab: React.FC<IProps> = (props: IProps) => {
-  const totalPrice = props.cartItems.reduce(
+  const cartState = useSelector((state: RootState) => state.cartList);
+  const dispatch = useDispatch();
+
+  const totalPrice = cartState.items.reduce(
     (result, cartItem) => result + cartItem.count * cartItem.price,
     0
   );
 
   const handleAddOrder = () => {
-    if (props.cartItems.length === 0) return;
+    if (cartState.items.length === 0) return;
 
     const order: IOrder = {
-      products: props.cartItems,
+      products: cartState.items,
       totalPrice: totalPrice,
       date: new Date().toDateString(),
     };
     props.handleAddOrder(order);
+
+    dispatch(clearCart());
   };
 
   return (
     <>
       <CartList
-        cartItems={props.cartItems}
-        handleCartItemCountChange={props.handleCartItemCountChange}
-        handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+        cartItems={cartState.items}
+        handleCartItemCountChange={(cartItemId: number, newCount: number) =>
+          dispatch(setProductCount(cartItemId, newCount))
+        }
+        handleRemoveItemFromCart={(cartItemId: number) =>
+          dispatch(removeProduct(cartItemId))
+        }
       />
       <Divider />
       <div className="add-order-wrapper">
         <div className="total-price">
-          {props.cartItems.length === 0 ? '' : `${totalPrice} ₽`}
+          {cartState.items.length === 0 ? '' : `${totalPrice} ₽`}
         </div>
         <Button
-          disabled={props.cartItems.length === 0}
+          disabled={cartState.items.length === 0}
           size="large"
           onClick={handleAddOrder}
         >
