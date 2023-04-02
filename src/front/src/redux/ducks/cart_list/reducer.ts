@@ -36,7 +36,7 @@ const reducer = (
         cartItem => cartItem.id == action.payload
       );
       if (productInCartList && productInCartList.count < 100) {
-        productInCartList!.count++;
+        productInCartList.count++;
         return {
           items: state.items,
         } as ICartListState;
@@ -49,7 +49,7 @@ const reducer = (
         cartItem => cartItem.id == action.payload
       );
       if (productInCartList && productInCartList.count > 0) {
-        productInCartList!.count--;
+        productInCartList.count--;
         return {
           items: state.items,
         } as ICartListState;
@@ -67,7 +67,7 @@ const reducer = (
         action.payload.newCount < 100 &&
         action.payload.newCount > 0
       ) {
-        productInCartList!.count = action.payload.newCount;
+        productInCartList.count = action.payload.newCount;
         return {
           items: state.items,
         } as ICartListState;
@@ -91,7 +91,6 @@ const reducer = (
       return {
         items: [],
       } as ICartListState;
-      return state;
     }
 
     default:

@@ -1,14 +1,11 @@
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { Badge, Button, Modal, Space, Tabs } from 'antd';
-import { useEffect, useState } from 'react';
-import { randomNumberInRange } from 'utils/randomNumber';
+
 import CartItemsTab from './Components/CartItemsTab';
 import OrdersTab from './Components/OrdersTab';
-import cookies from 'utils/cookies';
-import cookiesNames from 'constants/cookiesNames';
+
 import { RootState } from 'redux/rootReducer';
 import { useSelector } from 'react-redux';
-import { CartItem } from 'redux/ducks/cart_list';
 
 interface IProps {
   isCartModalOpen: boolean;
@@ -16,44 +13,8 @@ interface IProps {
   handleCloseCart: () => void;
 }
 
-export interface IOrder {
-  id?: number;
-  products: CartItem[];
-  totalPrice: number;
-  date: string;
-}
-
 const Cart: React.FC<IProps> = (props: IProps) => {
-  const [orders, setOrders] = useState<IOrder[]>([]);
   const cartState = useSelector((state: RootState) => state.cartList);
-
-  useEffect(() => {
-    const ordersFromCookies =
-      (cookies.get(cookiesNames.orders) as IOrder[]) ?? [];
-
-    setOrders(ordersFromCookies);
-  }, []);
-
-  const handleChangeOrders = (orders: IOrder[]) => {
-    cookies.set(cookiesNames.orders, orders);
-  };
-
-  const handleAddOrder = (order: IOrder) => {
-    order.id = randomNumberInRange(1, 10000000);
-    const newOrders = [...orders, order];
-
-    setOrders(newOrders);
-
-    handleChangeOrders(newOrders);
-  };
-
-  const handleRemoveOrder = (orderToDelete: IOrder) => {
-    const newOrders = orders.filter(order => order.id !== orderToDelete.id);
-
-    setOrders(newOrders);
-
-    handleChangeOrders(newOrders);
-  };
 
   return (
     <>
@@ -82,17 +43,12 @@ const Cart: React.FC<IProps> = (props: IProps) => {
             {
               label: 'Корзина',
               key: '1',
-              children: <CartItemsTab handleAddOrder={handleAddOrder} />,
+              children: <CartItemsTab />,
             },
             {
               label: 'Заказы',
               key: '2',
-              children: (
-                <OrdersTab
-                  orders={orders}
-                  handleRemoveItemFromOrders={handleRemoveOrder}
-                />
-              ),
+              children: <OrdersTab />,
             },
           ]}
         />
