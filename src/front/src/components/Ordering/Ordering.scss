@@ -1,0 +1,116 @@
+.podborka__title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 0 40px 0;
+}
+
+.podborka_wrapper {
+  padding-bottom: 64px;
+  width: 25%;
+}
+.invisible {
+  display: none;
+}
+.ordering__area {
+  .ordering__title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0 0 40px 0;
+  }
+
+  .row__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .ordering__form {
+      background-color: white;
+      width: 47%;
+      border-radius: 5px;
+
+      .ordering__subtitle {
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+
+      .input-area-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .column {
+          padding: 0 10px;
+
+          .inputarea {
+            text-align: center;
+            margin: 0 auto;
+            width: 16vw;
+            flex-direction: column;
+            display: flex;
+
+            .inputbox {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .passport__area {
+        .giveinputarea {
+          width: 100%;
+          text-align: center;
+
+          .giveinputbox {
+            width: 100%;
+          }
+        }
+
+        .passportinfo {
+          display: flex;
+          width: 100%;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .inputarea {
+            text-align: center;
+            margin: 0 auto;
+            width: 9vw;
+            flex-direction: column;
+            display: flex;
+
+            .inputbox {
+              width: 100%;
+            }
+          }
+
+          .seriainputarea {
+            margin: 0 auto;
+            text-align: center;
+            width: 5vw;
+
+            .seriainputbox {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .button-wrapper {
+    justify-content: end;
+    width: 100%;
+    display: flex;
+    .confirm__button {
+      border: none;
+      width: 200px;
+      height: 5vh;
+      background-color: aquamarine;
+      color: black;
+      border-radius: 10px;
+      justify-content: end;
+    }
+    .confirm__button:hover {
+      cursor: pointer;
+      scale: 1.01;
+    }
+  }
+}

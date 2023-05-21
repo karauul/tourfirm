@@ -4,23 +4,18 @@ import 'antd/dist/reset.css';
 import './index.scss';
 import App from 'App';
 import reportWebVitals from 'reportWebVitals';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from 'redux/store';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-  },
-]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <Provider store={store}>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
 );
 

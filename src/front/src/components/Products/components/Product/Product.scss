@@ -20,6 +20,7 @@
   background-color: $background-color;
   aspect-ratio: 1/1;
   width: 100%;
+  max-height: 400px;
   margin-bottom: 15px;
 
   .product-image {
@@ -38,6 +39,7 @@
 .product-price {
   font-size: 1rem;
   font-weight: 500;
+  margin: 25px 0;
 }
 
 .product-description {

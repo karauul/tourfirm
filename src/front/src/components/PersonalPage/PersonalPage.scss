@@ -1,0 +1,117 @@
+@import 'constants/styles.scss';
+
+.personal__area {
+  min-height: 70vh;
+  width: 100%;
+  padding: 40px 0;
+
+  .personal__title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0 0 40px 0;
+  }
+
+  .personal__subtitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .logout__button {
+    border-radius: 40px;
+    border: none;
+    height: 5vh;
+    width: 15vw;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: $header-background-color;
+    color: $text-color;
+  }
+  .logout__button:hover {
+    cursor: pointer;
+    scale: (1.001);
+  }
+
+  .row__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .personal__form {
+    background-color: white;
+    width: 100%;
+    border-radius: 5px;
+    padding: 30px 0px;
+    margin: 20px 0;
+
+    .changeinfo {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .change__button {
+        border: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        background-color: white;
+      }
+      .change__button:hover {
+        color: rgb(26, 79, 179);
+        cursor: pointer;
+      }
+    }
+
+    .input-area-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      .inputarea {
+        text-align: center;
+
+        margin: 0 20px;
+        width: 15vw;
+
+        .inputbox {
+          width: 15vw;
+        }
+      }
+    }
+    .confirm__buttons {
+      width: 100%;
+      justify-content: end;
+      display: flex;
+
+      .cancel__button {
+        border: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        background-color: white;
+        width: 200px;
+        height: 5vh;
+        margin-right: 10px;
+      }
+      .confirm__button {
+        border: none;
+        width: 200px;
+        height: 5vh;
+        background-color: $header-background-color;
+        color: $text-color;
+        border-radius: 10px;
+      }
+      .confirm__button:hover {
+        cursor: pointer;
+        scale: 1.01;
+      }
+      .cancel__button:hover {
+        cursor: pointer;
+        scale: 1.01;
+      }
+    }
+  }
+
+  .personal_form2 {
+    margin-top: 5vh;
+    background-color: $header-background-color;
+    border-radius: 5px;
+    padding: 30px 20px;
+  }
+}

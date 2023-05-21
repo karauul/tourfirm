@@ -1,7 +1,7 @@
 import './Product.scss';
-import { Button, Space, Divider, Modal, Tooltip } from 'antd';
+import { Button, Space, Divider, Modal, Tooltip, Rate } from 'antd';
 import { useState } from 'react';
-import { IProduct } from 'api/baseApi/models/product';
+import { IProduct } from 'api/types/product';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'redux/rootReducer';
 import { addProduct } from 'redux/ducks/cart_list';
@@ -33,12 +33,10 @@ const Product: React.FC<IProps> = (props: IProps) => {
           <img className="product-image" src={props.item.image} alt="" />
         </div>
         <div className="product-title">{props.item.title}</div>
-        <Divider style={{ marginTop: '0 ', marginBottom: '12px' }} />
+        <Rate disabled value={props.item.hotel.stars} />
+        <Divider style={{ marginTop: '10px ', marginBottom: '12px' }} />
         <div className="product-price">{props.item.price} ₽.</div>
-        <div className="product-description">
-          Описание:
-          {props.item.description}
-        </div>
+
         <div className="action-buttons-wrapper">
           <Space.Compact block size="large">
             {cartState.items.find(cartItem => cartItem.id === props.item.id) ? (
@@ -76,11 +74,10 @@ const Product: React.FC<IProps> = (props: IProps) => {
       </div>
       <Modal
         open={isModalOpen}
-        title={props.item.title}
         onCancel={handleCancel}
         footer={null}
         centered
-        width={'304px'}
+        width={'1000px'}
       >
         <div className="product-image-wrapper">
           <img className="product-image" src={props.item.image} alt="" />
@@ -89,7 +86,7 @@ const Product: React.FC<IProps> = (props: IProps) => {
         <Divider style={{ marginTop: '0 ', marginBottom: '12px' }} />
         <div className="product-price">{props.item.price} ₽.</div>
         <div className="product-description">
-          Описание:
+          Описание: {}
           {props.item.description}
         </div>
       </Modal>

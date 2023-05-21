@@ -1,0 +1,22 @@
+@import 'constants/styles.scss';
+
+.nav-bar {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav {
+  margin: 0 22px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  user-select: none;
+  color: $inversed-text-color;
+}
+
+.nav:hover {
+  cursor: pointer;
+  color: $inversed-text-hover-color;
+  text-decoration: underline;
+}

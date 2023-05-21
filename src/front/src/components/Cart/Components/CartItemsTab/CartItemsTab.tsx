@@ -9,10 +9,16 @@ import { RootState } from 'redux/rootReducer';
 import CartList from '../CartList';
 import './CartItemsTab.scss';
 import { IOrder, addOrder } from 'redux/ducks/orders_list';
+import { useNavigate } from 'react-router-dom';
 
-const CartItemsTab: React.FC = () => {
+export interface IProps {
+  closeCart: () => void;
+}
+
+const CartItemsTab: React.FC<IProps> = (props: IProps) => {
   const cartState = useSelector((state: RootState) => state.cartList);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const totalPrice = cartState.items.reduce(
     (result, cartItem) => result + cartItem.count * cartItem.price,
@@ -20,17 +26,22 @@ const CartItemsTab: React.FC = () => {
   );
 
   const handleAddOrder = () => {
-    if (cartState.items.length === 0) return;
-
-    const order: IOrder = {
-      products: cartState.items,
-      totalPrice: totalPrice,
-      date: new Date(),
-    };
-
-    dispatch(addOrder(order));
-    dispatch(clearCart());
+    navigate('/Ordering');
+    props.closeCart();
   };
+
+  // const handleAddOrder = () => {
+  //   if (cartState.items.length === 0) return;
+
+  //   const order: IOrder = {
+  //     products: cartState.items,
+  //     totalPrice: totalPrice,
+  //     date: new Date(),
+  //   };
+
+  //   dispatch(addOrder(order));
+  //   dispatch(clearCart());
+  // };
 
   return (
     <>

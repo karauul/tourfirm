@@ -1,0 +1,86 @@
+@import 'constants/styles.scss';
+
+.authorizationarea {
+  margin-top: $header-height;
+  min-height: 55vh;
+  width: 100%;
+  padding: 40px 0 0 0;
+  display: flex;
+  justify-content: center;
+
+  .authorizationbox {
+    background-color: $header-background-color;
+    min-height: 55vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    border-radius: 10px;
+
+    .authorizationtitle {
+      color: $text-color;
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 10vh;
+    }
+
+    .inputarea {
+      display: flex;
+      margin-bottom: 5vh;
+      color: $text-color;
+      font-size: 1.3rem;
+
+      .template {
+        background-color: white;
+        height: 40px;
+        width: 40px;
+        display: flex;
+        padding: 5px;
+        font-weight: 700;
+        border-radius: 10px 0 0 10px;
+      }
+      .inputbox {
+        background-color: white;
+        height: 40px;
+        min-width: 30vw;
+        display: flex;
+        padding: 5px 20px;
+        border-radius: 0 10px 10px 0;
+        border: none;
+      }
+      .inputbox2 {
+        background-color: white;
+        height: 40px;
+        width: 100%;
+        display: flex;
+        padding: 5px 20px;
+        border-radius: 10px;
+        border: none;
+      }
+    }
+
+    .authorizationbutton {
+      background-color: whi;
+      border: none;
+      border-radius: 40px;
+      height: 7vh;
+      width: 15vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 5vh;
+    }
+    .authorizationbutton:hover {
+      cursor: pointer;
+      scale: (1.01);
+    }
+
+    .go_to_registry {
+      color: black;
+      display: flex;
+    }
+  }
+}

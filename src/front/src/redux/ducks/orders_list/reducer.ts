@@ -7,6 +7,15 @@ export interface IOrder {
   products: CartItem[];
   totalPrice: number;
   date: Date;
+  surname: string;
+  name: string;
+  birthday: string;
+  grazhdanstvo: string;
+  serialNumber: string;
+  number: string;
+  passportStartDate: string;
+  passportEndDate: string;
+  passportAuthor: string;
 }
 
 export interface IOrdersListState {
@@ -25,6 +34,12 @@ const reducer = (
     case actionTypes.ADD_ORDER: {
       return {
         items: [{ ...action.payload, count: 1 } as IOrder, ...state.items],
+      } as IOrdersListState;
+    }
+
+    case actionTypes.CLEAR_ORDERS: {
+      return {
+        items: [],
       } as IOrdersListState;
     }
 

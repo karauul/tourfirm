@@ -31,7 +31,28 @@
     cursor: pointer;
   }
 
-  .cart-wrapper {
+  .auth-logo {
+    position: absolute;
+    align-items: center;
+    right: calc($page-horizontal-padding + 50px);
+    box-sizing: content-box;
+    display: flex;
+    padding: 30px;
+
+    .auth-logo-img {
+      object-fit: scale-down;
+      height: 100%;
+      width: 100%;
+      opacity: 0.8;
+    }
+    .auth-logo-img:hover {
+      cursor: pointer;
+      opacity: 1;
+      scale: 1.05;
+    }
+  }
+
+  .cart-button-wrapper {
     position: absolute;
     right: $page-horizontal-padding;
     height: 100%;
@@ -50,7 +71,7 @@
 
 .body {
   background-color: $background-color;
-  margin-top: $header-height;
+  margin: calc($header-height + 5vh) 0 $header-height 0;
   min-height: calc(100vh - $header-height - $footer-height);
   padding: 0 $page-horizontal-padding;
   box-sizing: content-box;
@@ -63,16 +84,23 @@
 
   .products-area {
     padding: 5vh 0;
+
+    .filters-wrapper {
+      padding-bottom: 16px;
+      display: flex;
+      gap: 8px;
+    }
   }
 
   .title {
     font-size: 1.7rem;
     font-weight: 500;
-    margin-bottom: 24px;
+    margin-bottom: 48px;
   }
 
   .content {
     font-size: 1.2rem;
+    width: 500px;
   }
 }
 
@@ -141,4 +169,19 @@
       height: 100%;
     }
   }
+}
+
+.cart-wrapper {
+  width: 450px;
+  max-height: 500px;
+  padding: 12px;
+  border-radius: 0 0 6px 6px;
+  border: 1px solid lightgrey;
+  background-color: white;
+  box-shadow: 2px 4px 10px $shadow-color;
+  color: white;
+  position: fixed;
+  top: $header-height;
+  z-index: 1000;
+  right: $page-horizontal-padding;
 }

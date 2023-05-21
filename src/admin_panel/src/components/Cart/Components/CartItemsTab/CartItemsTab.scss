@@ -1,0 +1,10 @@
+.add-order-wrapper {
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+}
+
+.total-price {
+  font-size: 1.2rem;
+  font-weight: 500;
+}

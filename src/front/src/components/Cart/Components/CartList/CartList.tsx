@@ -1,7 +1,8 @@
 import { DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, InputNumber, List, Space } from 'antd';
+import { Button, Empty, InputNumber, List, Space } from 'antd';
 import { CartItem } from 'redux/ducks/cart_list';
 import './CartList.scss';
+import locale from 'constants/locale';
 
 interface IProps {
   cartItems: CartItem[];
@@ -12,6 +13,7 @@ interface IProps {
 const CartList: React.FC<IProps> = (props: IProps) => {
   return (
     <List
+      locale={{ emptyText: <Empty description={locale.noDataMessage} /> }}
       itemLayout="horizontal"
       dataSource={props.cartItems}
       renderItem={item => (
@@ -26,38 +28,6 @@ const CartList: React.FC<IProps> = (props: IProps) => {
             </div>
           </div>
           <div className="cart-item-actions-bar">
-            <Space.Compact key={'change-count-actions-bar'}>
-              {props.handleCartItemCountChange && (
-                <Button
-                  icon={<MinusOutlined />}
-                  onClick={() => {
-                    if (props.handleCartItemCountChange)
-                      props.handleCartItemCountChange(item.id, item.count - 1);
-                  }}
-                />
-              )}
-              <InputNumber
-                min={1}
-                max={100}
-                style={{ width: 50 }}
-                controls={false}
-                disabled={!props.handleCartItemCountChange}
-                value={item.count}
-                onChange={value => {
-                  if (props.handleCartItemCountChange)
-                    props.handleCartItemCountChange(item.id, value ?? 1);
-                }}
-              />
-              {props.handleCartItemCountChange && (
-                <Button
-                  icon={<PlusOutlined />}
-                  onClick={() => {
-                    if (props.handleCartItemCountChange)
-                      props.handleCartItemCountChange(item.id, item.count + 1);
-                  }}
-                />
-              )}
-            </Space.Compact>
             {props.handleRemoveItemFromCart && (
               <Button
                 key={'delete-item-button'}
